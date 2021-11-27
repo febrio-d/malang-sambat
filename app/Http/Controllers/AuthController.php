@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Admin;
 
 class AuthController extends Controller
 {
@@ -65,5 +66,26 @@ class AuthController extends Controller
         $r->session()->regenerateToken();
 
         return redirect('/');
-    }  
+    }
+
+    public function admin_sign()
+    {
+        return view('auth.admin_signin', ['title' => 'Employee Sign In']);
+    }
+
+    public function admin_signin(Request $r)
+    {
+        $credentials = $r->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::guard('employee')->attempt($credentials)) {
+            $r->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
+
+        return back()->with('error', 'Sorry, your username or password was incorrect.');
+    }
 }

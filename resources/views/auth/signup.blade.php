@@ -2,12 +2,12 @@
 
 @section('container')
 	<div class="row justify-content-center">
-		<div class="col-lg-6">
+		<div class="col-lg-5">
 			<main class="form-signup">
 			  <form action="/signup" method="post">
 			  	@csrf
 			  	<div class="text-center">				  		
-				  <img class="mb-5" src="{{ asset('img/malang.png') }}" width="250">
+				  <img class="img-fluid mb-3" src="{{ asset('img/malang.png') }}" width="200">
 				  <h4 class="mb-3 fw-normal">Sambat Malang</h4>
 				</div>
 
@@ -50,7 +50,7 @@
 			    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
 			  </form>
 			  <small class="d-block text-center mt-1">Have an account? <a href="/">Sign In</a></small>
-			  <p class="mt-4 text-muted text-center">Copyright &copy; 2021 Pemkot Malang</p>
+			  <p class="mt-3 text-muted text-center">Copyright &copy; 2021 Pemkot Malang</p>
 			</main>
 		</div>	
 	</div>

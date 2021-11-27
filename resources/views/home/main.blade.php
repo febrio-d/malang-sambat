@@ -8,15 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-    <!-- Signin template CSS -->
-    <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
-
     <title>Sambat Malang | {{ $title }}</title>
   </head>
   <body>
-  	<div class="container mt-4">
-      @yield('container')
-    </div>
+        @include('home.navbar')
+
+      <div class="container mt-4">
+        @yield('container')
+      </div>
 
     <!-- JavaScript -->
 

@@ -4,17 +4,17 @@
   		<div class="row justify-content-center">
   			<div class="col-lg-5">
 		    	<main class="form-signin">
-				  <form action="/" method="post">
+				  <form action="/adminsignin" method="post">
 				  	@csrf
 				  	<div class="text-center">				  		
 				  	  <img class="img-fluid mb-3" src="{{ asset('img/malang.png') }}" width="200">
-				      <h4 class="mb-3 fw-normal">Sambat Malang</h4>
+				      <h4 class="mb-3 fw-normal">Sambat Malang Employee</h4>
 				  	</div>
 
 				    <div class="form-floating">
-				      <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="name@example.com" autofocus required>
-				      <label for="email">Email address</label>
-				      @error('email')
+				      <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username" autofocus required>
+				      <label for="username">Username</label>
+				      @error('username')
 						<div class="invalid-feedback">
 							{{ $message }}
       					</div>
@@ -26,8 +26,7 @@
 				    </div>
 
 				    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign In</button>
-				    <small class="d-block text-center mt-1">Don't have an account? <a href="/signup">Sign Up here</a></small>
-					<small class="d-block text-center">Are you an employee? <a href="/adminsignin">Click here</a></small>
+					<small class="d-block text-center">If you're not an employee, I think you're missclicked! <a href="/">Go back</a></small>
 				    <p class="mt-4 text-muted text-center">Copyright &copy; 2021 Pemkot Malang</p>
 				  </form>
 				</main>
