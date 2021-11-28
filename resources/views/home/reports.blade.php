@@ -20,7 +20,7 @@
                 <div class="card-body">
                   <p class="card-text">{{ $r->desc }}</p>
                   <p class="card-text"><small class="text-muted">Reported {{ $r->created_at->diffForHumans() }}</small></p>
-                  <a href="/report/{{ $r->id }}" class="btn btn-primary">See the response here</a>
+                  <a href="/response/{{ $r->id }}" class="btn btn-primary">See the response here</a>
                 </div>
               </div>
             </div>

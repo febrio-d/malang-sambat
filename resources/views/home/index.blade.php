@@ -6,8 +6,8 @@
         <form action="/home" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-            <label for="desc" class="form-label">Description</label>
-            <textarea class="form-control" id="desc" name="desc" rows="5"></textarea>
+                <label for="desc" class="form-label">Description</label>
+                <textarea class="form-control" id="desc" name="desc" rows="5"></textarea>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>

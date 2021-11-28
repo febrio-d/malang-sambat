@@ -10,4 +10,9 @@ class Admin extends Authenticatable
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function response()
+    {
+        return $this->hasMany(Response::class)->latestOfMany();
+    }
 }

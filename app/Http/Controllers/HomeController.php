@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\Response;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,10 @@ class HomeController extends Controller
             'image' => 'image|file|max:16384'
         ]);
 
-        $validatedData['image'] = $r->file('image')->store('img');
+
+        if ($r->file('image')) {
+            $validatedData['image'] = $r->file('image')->store('img');
+        }
         $validatedData['created_at'] = now();
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['status'] = '0';
@@ -35,6 +39,15 @@ class HomeController extends Controller
         return view('home.reports', [
             'title' => 'Reports',
             'reports' => Report::where(['user_id' => auth()->user()->id])->get()
+        ]);
+    }
+
+    public function response(Report $report)
+    {
+        return view('home.response', [
+            'title' => 'Response',
+            'r' => $report,
+            'resp' => Response::query()->where('report_id', $report->id)->first()
         ]);
     }
 

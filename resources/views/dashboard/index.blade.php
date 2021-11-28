@@ -25,14 +25,14 @@
                                 <div class="card-body">
                                 <p class="card-text">{{ $r->desc }}</p>
                                 <p class="card-text"><small class="text-muted">Reported by {{ $r->user->name }} {{ $r->created_at->diffForHumans() }}</small></p>
-                                @if ($r->status != '0')
-                                <a href="/dashboard/responsed/{{ $r->id }}" class="btn btn-primary float-start">See the response here</a>
-                                @else
+                                @if ($r->status == '0')
                                 <a href="/dashboard/response/{{ $r->id }}" class="btn btn-primary">Response here</a>
                                 @endif
                                 @if ($r->status == 'processed')
-                                <form action="/dashboard/closed">
-                                    <button type="submit" class="btn btn-warning float-end">Finish the report</button>
+                                <form action="/dashboard/closed" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="report_id" id="report_id" value="{{ $r->id }}">
+                                    <button type="submit" class="btn btn-warning float-end" onclick="confirm('Are you sure that the report is solved?')">Finish the report</button>
                                 </form>
                                 @endif
                                 </div>
