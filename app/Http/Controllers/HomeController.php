@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,18 +13,33 @@ class HomeController extends Controller
         return view('home.index', ['title' => 'Home']);
     }
 
+    public function reportstore(Request $r)
+    {
+        $validatedData = $r->validate([
+            'desc' => 'required',
+            'image' => 'image|file|max:16384'
+        ]);
+
+        $validatedData['image'] = $r->file('image')->store('img');
+        $validatedData['created_at'] = now();
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['status'] = '0';
+
+        Report::create($validatedData);
+
+        return redirect('/reports')->with('success', 'Your report has been added!');
+    }
+
     public function reports()
     {
-        return view('home.reports', ['title' => 'Reports']);
+        return view('home.reports', [
+            'title' => 'Reports',
+            'reports' => Report::where(['user_id' => auth()->user()->id])->get()
+        ]);
     }
 
     public function profile()
     {
         return view('home.profile', ['title' => 'Profile']);
-    }
-
-    public function editprofile()
-    {
-        return view('home.editprofile', ['title' => 'Edit Profile']);
     }
 }

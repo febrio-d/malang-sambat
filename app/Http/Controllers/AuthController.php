@@ -20,7 +20,7 @@ class AuthController extends Controller
     public function signin(Request $r)
     {
         $credentials = $r->validate([
-            'email' => ['required', 'email'],
+            'username' => ['required'],
             'password' => ['required'],
         ]);
 
@@ -43,10 +43,11 @@ class AuthController extends Controller
     public function store(Request $r)
     {
         $validatedData = $r->validate([
+            'id' => 'required|max:16|unique:users',
             'name' => 'required|max:255',
             'username' => 'required|min:3|max:255|unique:users',
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255'
+            'password' => 'required|min:5|max:255',
+            'phone' => 'required|max:15|min:7'
 
         ]);
 
@@ -66,26 +67,5 @@ class AuthController extends Controller
         $r->session()->regenerateToken();
 
         return redirect('/');
-    }
-
-    public function admin_sign()
-    {
-        return view('auth.admin_signin', ['title' => 'Employee Sign In']);
-    }
-
-    public function admin_signin(Request $r)
-    {
-        $credentials = $r->validate([
-            'username' => ['required'],
-            'password' => ['required'],
-        ]);
-
-        if (Auth::guard('employee')->attempt($credentials)) {
-            $r->session()->regenerate();
-
-            return redirect()->intended('dashboard');
-        }
-
-        return back()->with('error', 'Sorry, your username or password was incorrect.');
     }
 }

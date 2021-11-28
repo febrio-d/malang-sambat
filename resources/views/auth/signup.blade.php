@@ -11,8 +11,17 @@
 				  <h4 class="mb-3 fw-normal">Sambat Malang</h4>
 				</div>
 
+				<div class="form-floating">
+				  <input type="text" name="id" class="form-control @error('id') is-invalid @enderror" id="id" placeholder="id" value="{{ old('id') }}" required autofocus>
+				  <label for="id">ID</label>
+				  @error('id')
+					<div class="invalid-feedback">
+						{{ $message }}
+					  </div>
+				  @enderror
+				</div>
 			    <div class="form-floating">
-			      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
+			      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" value="{{ old('name') }}" required>
 			      <label for="name">Name</label>
 			      @error('name')
 					<div class="invalid-feedback">
@@ -30,8 +39,8 @@
 			      @enderror
 			    </div>
 			    <div class="form-floating">
-			      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" value="{{ old('email') }}" required>
-			      <label for="email">Email address</label>
+			      <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="phone" value="{{ old('phone') }}" required>
+			      <label for="phone">Phone Number</label>
 			      @error('email')
 					<div class="invalid-feedback">
 						{{ $message }}

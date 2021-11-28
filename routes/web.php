@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,20 +17,21 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/adminsignin', [AuthController::class, 'admin_sign'])->name('admin.login')->middleware('guest');
-Route::post('/adminsignin', [AuthController::class, 'admin_signin']);
+Route::get('/adminsignin', [AdminAuthController::class, 'index'])->name('adminsignin')->middleware('guest');
+Route::post('/adminsignin', [AdminAuthController::class, 'signin']);
+Route::post('/adminsignout', [AdminAuthController::class, 'signout']);
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-})->middleware('auth:employee');
+})->name('dashboard.index')->middleware('auth:employee');
 
-Route::get('/', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/', [AuthController::class, 'index'])->name('usersignin')->middleware('guest');
 Route::post('/', [AuthController::class, 'signin']);
 Route::get('/signup', [AuthController::class, 'signup'])->middleware('guest');
 Route::post('/signup', [AuthController::class, 'store']);
 Route::post('/signout', [AuthController::class, 'signout']);
 
-Route::get('/home', [HomeController::class, 'index'])->middleware('auth');
-Route::get('/reports', [HomeController::class, 'reports'])->middleware('auth');
-Route::get('/profile', [HomeController::class, 'profile'])->middleware('auth');
-Route::get('/profile/edit', [HomeController::class, 'editprofile'])->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth:web');
+Route::post('/home', [HomeController::class, 'reportstore']);
+Route::get('/reports', [HomeController::class, 'reports'])->middleware('auth:web');
+Route::get('/profile', [HomeController::class, 'profile'])->middleware('auth:web');
