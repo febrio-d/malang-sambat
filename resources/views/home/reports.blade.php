@@ -9,12 +9,17 @@
           <div class="card mb-3">
             <div class="row">
               <div class="col-lg-2">
+                @if ($r->status == 'processed')
+                <div class="position-absolute bg-primary text-light px-2 py-1 bg-opacity-75 rounded">Processed</div>
+                @elseif ($r->status == 'done')
+                <div class="position-absolute bg-success text-light px-2 py-1 bg-opacity-75 rounded">Done</div>
+                @endif
                 <img src="{{ asset('storage/' . $r->image) }}" class="img-thumbnail rounded-start" style="max-width: 200px" alt="{{ $r->image }}">
               </div>
               <div class="col-lg-10">
                 <div class="card-body">
                   <p class="card-text">{{ $r->desc }}</p>
-                  <p class="card-text"><small class="text-muted">{{ $r->created_at->diffForHumans() }}</small></p>
+                  <p class="card-text"><small class="text-muted">Reported {{ $r->created_at->diffForHumans() }}</small></p>
                   <a href="/report/{{ $r->id }}" class="btn btn-primary">See the response here</a>
                 </div>
               </div>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,14 @@ Route::get('/adminsignin', [AdminAuthController::class, 'index'])->name('adminsi
 Route::post('/adminsignin', [AdminAuthController::class, 'signin']);
 Route::post('/adminsignout', [AdminAuthController::class, 'signout']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->name('dashboard.index')->middleware('auth:employee');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth:employee');
+Route::get('/dashboard/response/{report:id}', [DashboardController::class, 'response'])->middleware('auth:employee');
+Route::post('/dashboard/response/{report:id}', [DashboardController::class, 'responsestore']);
+Route::get('/dashboard/responded', [DashboardController::class, 'responded'])->middleware('auth:employee');
+
+Route::get('/dashboard/employees', [DashboardController::class, 'employees'])->middleware('auth:employee')->can('admin');
+Route::get('/dashboard/register', [DashboardController::class, 'register'])->middleware('auth:employee')->can('admin');
+Route::post('/dashboard/register', [DashboardController::class, 'employeestore']);
 
 Route::get('/', [AuthController::class, 'index'])->name('usersignin')->middleware('guest');
 Route::post('/', [AuthController::class, 'signin']);
