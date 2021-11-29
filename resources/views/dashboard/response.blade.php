@@ -11,6 +11,7 @@
                     <div class="card-body">
                         <form action="/dashboard/response" method="POST">
                             @csrf
+                            <input type="hidden" name="id" id="id" value="{{ $r->id }}">
                             <input type="hidden" name="report_id" id="report_id" value="{{ $r->id }}">
                             <div class="row mb-3">
                                 <div class="col">

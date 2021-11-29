@@ -15,10 +15,10 @@ class CreateResponsesTable extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('report_id');
+            $table->foreignId('report_id');
             $table->timestamps();
             $table->text('response');
-            $table->bigInteger('employee_id');
+            $table->foreignId('employee_id');
         });
     }
 

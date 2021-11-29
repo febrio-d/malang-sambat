@@ -10,6 +10,7 @@ class Response extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $with = ['admin', 'report'];
 
     public function admin()
     {
@@ -18,6 +19,6 @@ class Response extends Model
 
     public function report()
     {
-        return $this->belongsTo(Report::class);
+        return $this->belongsTo(Report::class, 'response_id');
     }
 }

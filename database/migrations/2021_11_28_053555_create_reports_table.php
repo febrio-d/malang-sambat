@@ -16,10 +16,11 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->char('user_id', 100);
+            $table->foreignId('user_id');
             $table->text('desc');
             $table->string('image');
             $table->enum('status', ['0', 'processed', 'done']);
+            $table->foreignId('response_id')->nullable();
         });
     }
 

@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-    <title>Sambat Malang | {{ $title }}</title>
+    <title>Malang Sambat | {{ $title }}</title>
   </head>
   <body>
         @include('home.navbar')

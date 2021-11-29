@@ -11,7 +11,7 @@
     <!-- Signin template CSS -->
     <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
 
-    <title>Sambat Malang | {{ $title }}</title>
+    <title>Malang Sambat | {{ $title }}</title>
   </head>
   <body>
   	<div class="container mt-4">

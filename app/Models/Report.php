@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
-
     use HasFactory;
+
     protected $guarded = ['id'];
+    protected $with = ['user','response'];
 
     public function user()
     {
@@ -18,6 +19,6 @@ class Report extends Model
 
     public function response()
     {
-        return $this->hasOne(Response::class);
+        return $this->hasOne(Response::class, 'report_id');
     }
 }
