@@ -29,11 +29,14 @@
                                 <a href="/dashboard/response/{{ $r->id }}" class="btn btn-primary">Response here</a>
                                 @endif
                                 @if ($r->status == 'processed')
+                                <a href="/dashboard/responsed/{{ $r->id }}" class="btn btn-primary float-start">Check the response here</a>
                                 <form action="/dashboard/closed" method="POST">
                                     @csrf
                                     <input type="hidden" name="report_id" id="report_id" value="{{ $r->id }}">
-                                    <button type="submit" class="btn btn-warning float-end" onclick="confirm('Are you sure that the report is solved?')">Finish the report</button>
+                                    <button type="submit" class="btn btn-warning float-end" onclick="return confirm('Are you sure that the report is solved?')">Finish the report</button>
                                 </form>
+                                @elseif ($r->status == 'done')
+                                <a href="/dashboard/responsed/{{ $r->id }}" class="btn btn-primary">Check the response here</a>
                                 @endif
                                 </div>
                             </div>

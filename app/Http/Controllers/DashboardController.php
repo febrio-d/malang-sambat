@@ -38,6 +38,15 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function responsed(Report $report)
+    {
+        return view('dashboard.responsed', [
+            'title' => 'Response',
+            'r' => $report,
+            'responses' => Response::find($report->id)
+        ]);
+    }
+
     public function responsestore(Request $r)
     {
         $validatedData = $r->validate([

@@ -26,6 +26,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/dashboard/response/{report}', [DashboardController::class, 'response'])->middleware('auth:employee');
 Route::post('/dashboard/response', [DashboardController::class, 'responsestore']);
 Route::get('/dashboard/responded', [DashboardController::class, 'responded'])->middleware('auth:employee');
+Route::get('/dashboard/responsed/{report}', [DashboardController::class, 'responsed'])->middleware('auth:employee');
 Route::post('/dashboard/closed', [DashboardController::class, 'closed']);
 
 Route::get('/dashboard/employees', [DashboardController::class, 'employees'])->middleware('auth:employee')->can('admin');
