@@ -20,7 +20,6 @@ class CreateReportsTable extends Migration
             $table->text('desc');
             $table->string('image');
             $table->enum('status', ['0', 'processed', 'done']);
-            $table->foreignId('response_id')->nullable();
         });
     }
 

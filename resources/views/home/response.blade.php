@@ -11,10 +11,10 @@
                 <label for="image" class="form-label">Image</label>
                 <img src="{{ asset('storage/' .  $r->image) }}" alt="{{ $r->image }}" class="img-thumbnail d-block" style="max-width: 150px">
             </div>
-            @if ($r->response)
+            @if ($responses)
             <div class="mb-3">
                 <label for="desc" class="form-label">Response</label>
-                <textarea class="form-control" id="desc" name="desc" rows="3" readonly>{{ $r->response->response }}</textarea>
+                <textarea class="form-control" id="desc" name="desc" rows="3" readonly>{{ $responses->response }}</textarea>
             </div>
             @else
             <div class="mb-3">

@@ -41,7 +41,6 @@ class DashboardController extends Controller
     public function responsestore(Request $r)
     {
         $validatedData = $r->validate([
-            'id' => 'required',
             'response' => 'required',
             'report_id' => 'required'
         ]);
@@ -52,7 +51,6 @@ class DashboardController extends Controller
         Response::create($validatedData);
 
         $reportUpdate['status'] = 'processed';
-        $reportUpdate['response_id'] = $validatedData['id'];
         Report::where('id', $validatedData['report_id'])->update($reportUpdate);
 
         return redirect('/dashboard/responded');

@@ -47,7 +47,7 @@ class HomeController extends Controller
         return view('home.response', [
             'title' => 'Response',
             'r' => $report,
-            'responses' => Response::where('report_id', $report->id)->first()
+            'responses' => Response::find($report->id)
         ]);
     }
 
