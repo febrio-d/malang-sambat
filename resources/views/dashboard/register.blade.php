@@ -6,7 +6,7 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h3>Register</h3>
             </div>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="card shadow-lg mb-4">
                     <div class="card-header">
                         <h4 class="text-center">Register New Employee</h4>

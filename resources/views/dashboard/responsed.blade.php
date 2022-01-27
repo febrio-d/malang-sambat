@@ -23,7 +23,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <img src="{{ asset('storage/' .  $r->image) }}" alt="{{ $r->image }}" class="img-thumbnail d-block" style="max-width: 150px">
+                    <img src="{{ asset('storage/' .  $r->image) }}" alt="{{ $r->image }}" class="img-thumbnail d-block" style="width: 200px; height: 150px;">
                 </div>
                 <div class="mb-3">
                     <label for="desc" class="form-label">Response</label>

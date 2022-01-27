@@ -14,7 +14,7 @@
                 @elseif ($r->status == 'done')
                 <div class="position-absolute bg-success text-light px-2 py-1 bg-opacity-75 rounded">Done</div>
                 @endif
-                <img src="{{ asset('storage/' . $r->image) }}" class="img-thumbnail rounded-start" style="max-width: 200px" alt="{{ $r->image }}">
+                <img src="{{ asset('storage/' . $r->image) }}" class="img-thumbnail rounded-start" style="width: 200px; height: 150px;" alt="{{ $r->image }}">
               </div>
               <div class="col-lg-10">
                 <div class="card-body">

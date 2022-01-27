@@ -6,7 +6,7 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h3>Response the report</h3>
             </div>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="card px-2 py-2 mb-4">
                     <div class="card-body">
                         <form action="/dashboard/response" method="POST">
@@ -29,7 +29,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="image" class="form-label">Image</label>
-                                <img src="{{ asset('storage/' . $r->image) }}" alt="{{ $r->image }}" class="img-thumbnail d-block" style="max-width: 150px">
+                                <img src="{{ asset('storage/' . $r->image) }}" alt="{{ $r->image }}" class="img-thumbnail d-block" style="width: 200px; height: 150px;">
                             </div>
                             <div class="mb-3">
                                 <label for="response" class="form-label">Response</label>
