@@ -19,28 +19,50 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/adminsignin', [AdminAuthController::class, 'index'])->name('adminsignin')->middleware('guest');
+
 Route::post('/adminsignin', [AdminAuthController::class, 'signin']);
+
 Route::post('/adminsignout', [AdminAuthController::class, 'signout']);
 
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth:employee');
+
 Route::get('/dashboard/response/{report}', [DashboardController::class, 'response'])->middleware('auth:employee');
+
 Route::post('/dashboard/response', [DashboardController::class, 'responsestore']);
+
 Route::get('/dashboard/responded', [DashboardController::class, 'responded'])->middleware('auth:employee');
+
 Route::get('/dashboard/responsed/{report}', [DashboardController::class, 'responsed'])->middleware('auth:employee');
+
 Route::post('/dashboard/closed', [DashboardController::class, 'closed']);
 
+
+
 Route::get('/dashboard/employees', [DashboardController::class, 'employees'])->middleware('auth:employee')->can('admin');
+
 Route::get('/dashboard/register', [DashboardController::class, 'register'])->middleware('auth:employee')->can('admin');
+
 Route::post('/dashboard/register', [DashboardController::class, 'employeestore']);
 
+
 Route::get('/', [AuthController::class, 'index'])->name('usersignin')->middleware('guest');
+
 Route::post('/', [AuthController::class, 'signin']);
+
 Route::get('/signup', [AuthController::class, 'signup'])->middleware('guest');
+
 Route::post('/signup', [AuthController::class, 'store']);
+
 Route::post('/signout', [AuthController::class, 'signout']);
 
+
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth:web');
+
 Route::post('/home', [HomeController::class, 'reportstore']);
+
 Route::get('/reports', [HomeController::class, 'reports'])->middleware('auth:web');
+
 Route::get('/response/{report}', [HomeController::class, 'response'])->middleware('auth:web');
+
 Route::get('/profile', [HomeController::class, 'profile'])->middleware('auth:web');

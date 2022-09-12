@@ -14,7 +14,7 @@
     <title>Malang Sambat | {{ $title }}</title>
   </head>
   <body>
-  	<div class="container mt-4">
+  	<div class="container h-100">
       @yield('container')
     </div>
 

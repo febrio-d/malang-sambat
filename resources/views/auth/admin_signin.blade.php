@@ -6,7 +6,7 @@
 		    	<main class="form-signin">
 				  <form action="/adminsignin" method="post">
 				  	@csrf
-				  	<div class="text-center">				  		
+				  	<div class="text-center mt-4">				  		
 				  	  <img class="img-fluid mb-3" src="{{ asset('img/malang.png') }}" width="200">
 				      <h4 class="mb-3 fw-normal">Malang Sambat Employee</h4>
 				  	</div>
