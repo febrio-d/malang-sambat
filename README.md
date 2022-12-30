@@ -8,8 +8,8 @@
 </p>
 
 ## Installation
-1. Clone this repository `git clone https://github.com/rizalihwan/simrs.git`
-2. Go inside to folder by `cd simrs`
+1. Clone this repository `git clone https://github.com/febrio-d/malang-sambat.git`
+2. Go inside to folder by `cd malang-sambat`
 3. Run `composer install`
 4. Create `.env` file with command `cp .env.example .env`
 5. Generate key inside `.env` file by `php artisan key:generate`
